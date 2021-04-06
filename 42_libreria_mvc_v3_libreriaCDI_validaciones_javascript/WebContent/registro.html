@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+// === (igualdad estricta)   : true si los operandos son iguales y del mismo tipo
+// !== (desigualdad estricta): true si los operandos son del mismo tipo pero no iguales, o son de diferente tipo
+
+	function validarRegistro(){
+		return validarPassword() &&  validarEmail() && validarTelefono();
+	}	
+	
+
+
+	function validarPassword(){
+		if (document.getElementById("pwd1").value !== document.getElementById("pwd2").value){
+			   document.getElementById("mensaje").innerHTML = "Las contraseñas no coinciden";
+			   return false;
+			}		
+		return true;
+	}
+	
+	
+	
+	function validarEmail(){
+		//if (!document.getElementById("email").value.includes(".") || document.getElementById("email").value.includes("@"))
+		if (document.getElementById("email").value.indexOf(".") == -1 || document.getElementById("email").value.indexOf("@") == -1){
+			   document.getElementById("mensaje").innerHTML = "E-mail no válido, tiene que contener @ y punto (.)";
+			   return false;
+			}
+		return true;
+		
+	}
+	
+	
+	function validarTelefono(){
+		if (isNaN(parseInt(document.getElementById("tlf").value))){
+		  	document.getElementById("mensaje").innerHTML = "Teléfono sólo admite números";
+		    return false;
+		}
+		return true;
+		
+	}
+	
+	
+</script>
+</head>
+
+<body>
+<center>
+<h1>Alta de Clientes</h1>
+<br>
+<br>
+		<form action="Controller?option=doAgregar" method="POST" onSubmit="return validarRegistro()">
+		 	Usuario:<input type="text" name="usuario"/>
+		 	<br>
+		 	<br>
+		 	Contraseña: <input type="password" name="password" id ="pwd1">
+		 	<br>
+		 	<br>
+		 	Repetir Contraseña: <input type="password" name="password2" id="pwd2">
+		 	<br>
+		 	<br>
+		 	E-mail:<input type="text" name="email" id="email"/>
+		 	<br>
+		 	<br>
+		 	Telefono:<input type="number" name="telefono" id="tlf"/>
+		 	<br>
+		 	<br>
+			<input type="submit" value="Registrar"/>
+			<br>
+		 	<br>
+		 	<div id="mensaje"></div>
+		</form>
+	</center>
+</body>
+</html>

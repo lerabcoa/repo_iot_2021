@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+
+<script type="text/javascript">
+	function validar(){
+	var usuario=document.getElementById("usuario").value;
+	
+	if(usuario.length<3){
+		alert("El usuario debe tener más de 3 caracteres");
+		return false;
+	}else{
+		return true;
+	}
+	}
+
+</script>
+
+
+
+<body>
+<center>
+		<form action="Controller?option=doAutenticar" method="POST" onsubmit="return validar();">
+		 	Usuario:<input type="text" name="usuario" id="usuario" required ="required"/>
+		 	<br>
+		 	<br>
+		 	Contraseña: <input type="password" name="password">
+		 	<br>
+		 	<br>
+			<input type="submit" value="Aceptar"/>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="Controller?option=toRegistro">Registro Usuario</a>
+		</form>
+	</center>
+
+</body>
+</html>
